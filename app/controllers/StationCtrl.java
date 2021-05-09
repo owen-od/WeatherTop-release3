@@ -1,5 +1,6 @@
 package controllers;
 
+import java.util.Date;
 import java.util.List;
 
 import models.Reading;
@@ -37,7 +38,7 @@ public class StationCtrl extends Controller {
     }
 
     public static void addReading(long id, int code, double temperature, double windSpeed, int windDirection, int pressure) {
-        Reading reading = new Reading (code, temperature, windSpeed, windDirection, pressure);
+        Reading reading = new Reading (code, temperature, windSpeed, windDirection, pressure, new Date());
         Station station = Station.findById(id);
         station.readings.add(reading);
         station.save();
