@@ -6,6 +6,7 @@
       <th>Wind Speed</th>
       <th>Wind Direction</th>
       <th>Pressure</th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
@@ -25,6 +26,11 @@
         </td>
         <td>
           ${reading.pressure}
+        </td>
+        <td>
+          <a href="/stations/${_station.id}/deletereading/${reading.id}" class="ui icon button">
+            <i class="icon trash"></i>
+          </a>
         </td>
       </tr>
     #{/list}

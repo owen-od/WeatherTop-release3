@@ -3,28 +3,29 @@
 # ~~~~
 
 # Home page
-GET     /                                       Start.index
+GET     /                                           Start.index
 
-GET     /signup                                 Accounts.signup
-GET     /login                                  Accounts.login
-POST    /register                               Accounts.register
-POST    /authenticate                           Accounts.authenticate
-GET     /logout                                 Accounts.logout
+GET     /signup                                     Accounts.signup
+GET     /login                                      Accounts.login
+POST    /register                                   Accounts.register
+POST    /authenticate                               Accounts.authenticate
+GET     /logout                                     Accounts.logout
 
-GET     /dashboard                              Dashboard.index
-GET     /about                                  About.index
-GET     /stations/{id}                          StationCtrl.index
+GET     /dashboard                                  Dashboard.index
+GET     /about                                      About.index
+GET     /stations/{id}                              StationCtrl.index
 
-GET     /dashboard/deletestation/{id}           Dashboard.deleteStation
+GET     /dashboard/deletestation/{id}               Dashboard.deleteStation
+GET     /stations/{id}/deletereading/{readingid}    StationCtrl.deleteReading
 
-POST    /dashboard/addstation                   Dashboard.addStation
-POST    /stations/{id}/addreading               StationCtrl.addReading
+POST    /dashboard/addstation                       Dashboard.addStation
+POST    /stations/{id}/addreading                   StationCtrl.addReading
 
 # Ignore favicon requests
-GET     /favicon.ico                            404
+GET     /favicon.ico                                404
 
 # Map static resources from the /app/public folder to the /public path
-GET     /public/                                staticDir:public
+GET     /public/                                    staticDir:public
 
 # Catch all
-*       /{controller}/{action}                  {controller}.{action}
+*       /{controller}/{action}                      {controller}.{action}
