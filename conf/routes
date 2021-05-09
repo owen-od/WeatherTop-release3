@@ -15,6 +15,8 @@ GET     /dashboard                              Dashboard.index
 GET     /about                                  About.index
 GET     /stations/{id}                          StationCtrl.index
 
+GET     /dashboard/deletestation/{id}           Dashboard.deleteStation
+
 POST    /dashboard/addstation                   Dashboard.addStation
 POST    /stations/{id}/addreading               StationCtrl.addReading
 
