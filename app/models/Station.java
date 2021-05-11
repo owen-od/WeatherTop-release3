@@ -30,6 +30,9 @@ public class Station extends Model
   public int minPressure;
   public double maxTemp;
   public double minTemp;
+  public String tempTrend;
+  public String windTrend;
+  public String pressureTrend;
 
   public Station(String name, double latitude, double longitude)
   {

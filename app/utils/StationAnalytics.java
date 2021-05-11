@@ -79,6 +79,7 @@ public class StationAnalytics {
 
     /**
      * method to convert the windspeed in km/hr to Beaufort
+     *
      * @param windSpeed in km/h
      * @return wind reading on beaufort scale
      */
@@ -114,26 +115,29 @@ public class StationAnalytics {
 
     /**
      * method to convert the wind direction in degrees to compass direction
+     *
      * @param windDirection
      * @return compass Direction
      */
-    public static String degreesToDirection (int windDirection) {
-        String[] direction = {"N","NNE","NE","ENE","E","ESE","SE","SSE","S","SSW","SW","WSW","W","WNW","NW","NNW","N"};
+    public static String degreesToDirection(int windDirection) {
+        String[] direction = {"N", "NNE", "NE", "ENE", "E", "ESE", "SE", "SSE", "S", "SSW", "SW", "WSW", "W", "WNW", "NW", "NNW", "N"};
         int index = (int) Math.round((windDirection / 22.5));
         return direction[index];
     }
 
     /**
      * a method to calculate the wind chill
-     * @params temperature in degrees celsius, wind speed in km/h
+     *
      * @return wind chill
+     * @params temperature in degrees celsius, wind speed in km/h
      */
-    public static double windChillCalculator (double t, double v) {
-        return toTwoDecimalPlaces(13.12 + (0.6215*t) - 11.37 * Math.pow(v,0.16) + 0.3965 * t * Math.pow(v,0.16));
+    public static double windChillCalculator(double t, double v) {
+        return toTwoDecimalPlaces(13.12 + (0.6215 * t) - 11.37 * Math.pow(v, 0.16) + 0.3965 * t * Math.pow(v, 0.16));
     }
 
     /**
      * a private helper method to convert a double to two decimal places
+     *
      * @param num
      * @return num to two decimal places
      */
@@ -145,10 +149,11 @@ public class StationAnalytics {
 
     /**
      * A method to calculate the minimum wind speed from all current wind speed readings
+     *
      * @param readings for the station
      * @return the minimum wind speed of all the wind speed readings
      */
-    public static double minWindSpeed (List<Reading> readings) {
+    public static double minWindSpeed(List<Reading> readings) {
         Reading minReading = readings.get(0);
         for (Reading reading : readings) {
             if (reading.windSpeed < minReading.windSpeed) {
@@ -160,10 +165,11 @@ public class StationAnalytics {
 
     /**
      * A method to calculate the maximum wind speed from all current wind speed readings
+     *
      * @param readings for the station
      * @return the maximum wind speed of all the wind speed readings
      */
-    public static double maxWindSpeed (List<Reading> readings) {
+    public static double maxWindSpeed(List<Reading> readings) {
         Reading maxReading = readings.get(0);
         for (Reading reading : readings) {
             if (reading.windSpeed > maxReading.windSpeed) {
@@ -175,10 +181,11 @@ public class StationAnalytics {
 
     /**
      * A method to calculate the minimum pressure from all current pressure readings
+     *
      * @param readings for the station
      * @return the minimum pressure of all the pressure readings
      */
-    public static int minPressure (List<Reading> readings) {
+    public static int minPressure(List<Reading> readings) {
         Reading minReading = readings.get(0);
         for (Reading reading : readings) {
             if (reading.pressure < minReading.pressure) {
@@ -190,10 +197,11 @@ public class StationAnalytics {
 
     /**
      * A method to calculate the maximum pressure from all current pressure readings
+     *
      * @param readings for the station
      * @return the maximum pressure of all the pressure readings
      */
-    public static int maxPressure (List<Reading> readings) {
+    public static int maxPressure(List<Reading> readings) {
         Reading maxReading = readings.get(0);
         for (Reading reading : readings) {
             if (reading.pressure > maxReading.pressure) {
@@ -205,10 +213,11 @@ public class StationAnalytics {
 
     /**
      * A method to calculate the minimum temperature from all current temperature readings
+     *
      * @param readings for the station
      * @return the minimum temperature of all the temperature readings
      */
-    public static double minTemp (List<Reading> readings) {
+    public static double minTemp(List<Reading> readings) {
         Reading minReading = readings.get(0);
         for (Reading reading : readings) {
             if (reading.temperature < minReading.temperature) {
@@ -220,10 +229,11 @@ public class StationAnalytics {
 
     /**
      * A method to calculate the maximum temperature from all current temperature readings
+     *
      * @param readings for the station
      * @return the maximum temperature of all the temperature readings
      */
-    public static double maxTemp (List<Reading> readings) {
+    public static double maxTemp(List<Reading> readings) {
         Reading maxReading = readings.get(0);
         for (Reading reading : readings) {
             if (reading.temperature > maxReading.temperature) {
@@ -232,5 +242,102 @@ public class StationAnalytics {
         }
         return maxReading.temperature;
     }
+
+    /**
+     * a method determining if the last three temperature readings for a station are increasing, decreasing, or neither,
+     * and returning a string corresponding to an icon in fomatic ui
+     *
+     * @param readings for station
+     * @return String corresponding to icon in fomantic ui
+     */
+    public static String tempTrend(List<Reading> readings) {
+        if (readings.size() >= 4) {
+            int n = readings.size() - 1;
+            int increasing = 0;
+            int decreasing = 0;
+            for (int i = n; i > n - 3; i--) {
+                if (readings.get(i).temperature > readings.get(i - 1).temperature) {
+                    increasing++;
+                }
+            }
+            if (increasing == 3) {
+                return "arrow up";
+            }
+            for (int i = n; i > n - 3; i--) {
+                if (readings.get(i).temperature < readings.get(i - 1).temperature) {
+                    decreasing++;
+                }
+            }
+            if (decreasing == 3) {
+                return "arrow down";
+            }
+        }
+        return "arrows alternate horizontal";
+    }
+
+    /**
+     * a method determining if the last three wind readings for a station are increasing, decreasing, or neither,
+     * and returning a string corresponding to an icon in fomatic ui
+     *
+     * @param readings for station
+     * @return String corresponding to icon in fomantic ui
+     */
+    public static String windTrend(List<Reading> readings) {
+        if (readings.size() >= 4) {
+            int n = readings.size() - 1;
+            int increasing = 0;
+            int decreasing = 0;
+            for (int i = n; i > n - 3; i--) {
+                if (readings.get(i).windSpeed > readings.get(i - 1).windSpeed) {
+                    increasing++;
+                }
+            }
+            if (increasing == 3) {
+                return "arrow up";
+            }
+            for (int i = n; i > n - 3; i--) {
+                if (readings.get(i).windSpeed < readings.get(i - 1).windSpeed) {
+                    decreasing++;
+                }
+            }
+            if (decreasing == 3) {
+                return "arrow down";
+            }
+        }
+        return "arrows alternate horizontal";
+    }
+
+    /**
+     * a method determining if the last three pressure readings for a station are increasing, decreasing, or neither,
+     * and returning a string corresponding to an icon in fomatic ui
+     *
+     * @param readings for station
+     * @return String corresponding to icon in fomantic ui
+     */
+    public static String pressureTrend(List<Reading> readings) {
+        if (readings.size() >= 4) {
+            int n = readings.size() - 1;
+            int increasing = 0;
+            int decreasing = 0;
+            for (int i = n; i > n - 3; i--) {
+                if (readings.get(i).pressure > readings.get(i - 1).pressure) {
+                    increasing++;
+                }
+            }
+            if (increasing == 3) {
+                return "arrow up";
+            }
+            for (int i = n; i > n - 3; i--) {
+                if (readings.get(i).pressure < readings.get(i - 1).pressure) {
+                    decreasing++;
+                }
+            }
+            if (decreasing == 3) {
+                return "arrow down";
+            }
+        }
+        return "arrows alternate horizontal";
+    }
+
 
 }

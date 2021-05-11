@@ -37,6 +37,9 @@ public class Dashboard extends Controller
         station.minPressure = StationAnalytics.minPressure(station.readings);
         station.maxTemp = StationAnalytics.maxTemp(station.readings);
         station.minTemp = StationAnalytics.minTemp(station.readings);
+        station.tempTrend = StationAnalytics.tempTrend(station.readings);
+        station.windTrend = StationAnalytics.windTrend(station.readings);
+        station.pressureTrend = StationAnalytics.pressureTrend(station.readings);
       }
     }
     render ("dashboard.html", stations);
