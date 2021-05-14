@@ -39,6 +39,23 @@ public class Accounts extends Controller
         }
     }
 
+    public static void index () {
+        Logger.info("Rendering Account");
+        Member member = Accounts.getLoggedInMember();
+        render ("account.html", member);
+    }
+
+    public static void update (String firstname, String lastname, String email, String password) {
+        Logger.info("Updating account details");
+        Member member = Accounts.getLoggedInMember();
+        member.firstname = firstname;
+        member.lastname = lastname;
+        member.email = email;
+        member.password = password;
+        member.save();
+        redirect("/login");
+    }
+
     public static void logout()
     {
         session.clear();
