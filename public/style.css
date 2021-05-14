@@ -27,7 +27,7 @@ body {
 
 #site-header {
     font-size: 400%;
-    margin-top: 15vh;
+    margin-top: 20vh;
     margin-bottom: 0;
     padding-top: 0;
 }
@@ -45,4 +45,13 @@ body {
 #start-alt-header {
     margin-bottom: 3%;
     border-radius: 10px;
+}
+
+.menu-header {
+    font-size: 150%;
+    font-family: 'Lobster', cursive;
+}
+
+.title {
+    display: block;
 }
