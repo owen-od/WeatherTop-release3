@@ -1,13 +1,65 @@
 #{extends 'main.html' /}
-#{set title:'About' /}
+#{set title:'Start' /}
 
 #{welcomemenu id:"start"/}
 
-<section class="ui center aligned middle aligned segment">
-  <h1 class="ui header">
-    Welcome to WeatherTop
-  </h1> 
-  <p>
-    A small app to let you get the weather
-  </p>
-</section>
+<div id="landing">
+  <div class="ui secondary stackable menu" id="menu">
+    <div class="item"><i class="big blue tint icon"></i></i></div>
+  </div>
+  <div class="ui basic center aligned segment">
+    <h1 class="ui inverted center aligned huge header" id="site-header"> WeatherTop</h1>
+    <h3 class="ui inverted header" id="sub-header"> Weather for everyone. No credit card needed </h3>
+    <a class="huge positive ui button" href="/signup"> get WeatherTop free</a>
+  </div>
+</div>
+</br>
+<div class="ui basic center aligned segment">
+  <h2 class="ui center aligned header" id="start-alt-header">Why WeatherTop?</h2>
+  <div class="ui three column stackable grid" id="start-grid">
+    <div class="column">
+      <div class="ui circular segment">
+        <h3 class="ui header">Reliability</h3>
+        <p> You can rely on us.</br> You will never leave home without your umbrella in rainy weather again</p>
+        <img class="ui medium circular image" src="/public/images/umbrella.jpg">
+      </div>
+    </div>
+    <div class="column">
+      <div class="ui circular segment">
+        <h3 class="ui header">Knowledge</h3>
+        <p> We are experts.</br> We know what there is to know about the weather </p>
+        <img class="ui medium circular image" src="/public/images/knowledge.jpg">
+      </div>
+    </div>
+    <div class="column">
+      <div class="ui circular segment">
+        <h3 class="ui header">Innovation</h3>
+        <p>We are at the cutting edge. </br> Led by a team of in-house experts
+          we constantly develop new weather reading technologies</p>
+        <img class="ui medium circular image" src="/public/images/innovate.jpg">
+      </div>
+    </div>
+  </div>
+</div>
+<div class="ui segment">
+  <div class="ui two column grid" id =reviews>
+    <div class="ui center aligned column">
+      <h2 class="ui centered header" class="review-header">"Simply the best on the market"</h2>
+      <a class="ui blue image label">
+        <img class="ui mini image" src="/public/images/elliot.jpg">
+        Elliot
+        <div class="detail">Meteorologist at Met Éireann</div>
+      </a>
+    </div>
+    <div class="ui center aligned column">
+      <h2 class="ui centered header" class="review-header">"Exceptional weather predictions"</h2>
+      <a class="ui red image label">
+        <img class="ui mini image" src="/public/images/jenny.jpg">
+        Jenny
+        <div class="detail">Storm chaser at Discovery Channel</div>
+      </a>
+    </div>
+  </div>
+  <div class="ui vertical divider">
+  </div>
+</div>
