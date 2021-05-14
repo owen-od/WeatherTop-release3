@@ -3,9 +3,117 @@
 
 #{menu id:"about"/}
 
-<section class="ui center aligned middle aligned segment">
-  <p>
-    Weathertop - Release 3</br>
-    About section coming soon
+<section class="ui padded center aligned middle aligned segment" id="mission-segment">
+  <h2 class="ui header">Our Mission</h2>
+  <p id ="mission-text">
+    What's the weather like today?</br></br>
+    How many magical conversations have begun with this simple question. Here at weather
+    top, we believe that discussions on the weather are the entry point to the most magical and profound conversations of
+    our lives. That is why we seek to keep you informed. With our app you will never be found wanting when someone
+    wants to discuss the weather with you. Our core connection to nature, and to each other, is at the heart of all that
+    we do.</br></br>
+
+    Besides the obvious attractions of the above, we offer so much more. You will never be wondering if you should bring
+    your umbrella with you today, or weather wellies would be more appropriate than sandals. Knowledge is power and
+    it is now at your fingertips.
   </p>
+</section>
+<div class="ui hidden section divider"></div>
+<section class="ui blue center aligned middle aligned raised segment">
+  <h2 class = "ui header"> Meet the team</h2>
+  <div class = "ui four centered stackable cards">
+    <div class="ui card">
+      <div class="image">
+        <img src="/public/images/john.jpg" class ="team-image">
+      </div>
+      <div class="content">
+        <a class="header">John Dalton</a>
+        <div class="meta">
+          <span class="title">Meteorologist</span>
+          <span class="date">Joined in 1766</span>
+        </div>
+        <div class="description">
+          John is a meteorologist from Manchester. He specialises in all types of weather. In his spare time
+          he works on atomic theory.
+        </div>
+      </div>
+    </div>
+    <div class="ui card">
+      <div class="image">
+        <img src="/public/images/ada.jpg" class ="team-image">
+      </div>
+      <div class="content">
+        <a class="header">Ada Lovelace</a>
+        <div class="meta">
+          <span class="title">Programmer</span>
+          <span class="date">Joined in 1815</span>
+        </div>
+        <div class="description">
+          Ada is a programmer from London. She is a full stack developer, and has a special interest in working with
+          our analytical engine.
+        </div>
+      </div>
+    </div>
+    <div class="ui card">
+      <div class="image">
+        <img src="/public/images/anders.jpg" class ="team-image">
+      </div>
+      <div class="content">
+        <a class="header">Anders Celcius</a>
+        <div class="meta">
+          <span class="title">Astronomer and Physicist</span>
+          <span class="date">Joined in 1701</span>
+        </div>
+        <div class="description">
+          Anders is an astronomer, physicist and mathematician. He is most known for the celcius temperature scale,
+          which he developed in house, and which is named in his honor.
+        </div>
+      </div>
+    </div>
+    <div class="ui card">
+      <div class="image">
+        <img src="/public/images/john2.jpg" class ="team-image">
+      </div>
+      <div class="content">
+        <a class="header">John von Neumann</a>
+        <div class="meta">
+          <span class="title">Consultant</span>
+          <span class="date">Joined in 1903</span>
+        </div>
+        <div class="description">
+          John is the second John to join our team and works part time as a consultant. We come to John when we are
+          stuck on a problem and tells us the answer.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="ui hidden section divider"></div>
+<section class="ui blue center aligned middle aligned raised segment">
+  <h2 class="ui header"> Get in touch!</h2>
+  <form class="ui form">
+    <div class = "three fields">
+      <div class="field">
+        <label>First Name</label>
+        <input type="text" name="first-name" placeholder="First Name">
+      </div>
+      <div class="field">
+        <label>Last Name</label>
+        <input type="text" name="last-name" placeholder="Last Name">
+      </div>
+      <div class="field">
+        <label>Email</label>
+        <input type="email" name="email" placeholder="Email">
+      </div>
+    </div>
+    <div class="field">
+      <label>Message title</label>
+      <input type="text" name="message-title" placeholder="Message Title">
+    </div>
+    <div class="field">
+      <label>Text</label>
+      <textarea placeholder="Enter your message"></textarea>
+    </div>
+    <button class="ui blue button" type="submit">Submit</button>
+  </form>
 </section>
