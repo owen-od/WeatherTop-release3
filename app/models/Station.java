@@ -41,4 +41,8 @@ public class Station extends Model
     this.longitude = longitude;
   }
 
+  public String getName() {
+    return name;
+  }
+
 }
