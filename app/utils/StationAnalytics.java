@@ -1,4 +1,5 @@
 package utils;
+
 import models.Reading;
 import models.Station;
 
@@ -13,10 +14,10 @@ public class StationAnalytics {
 
     /**
      * a method to convert the weather code to a String of the current
-     * weather conditions
+     * weather conditions corresponding to an icon in fomantic ui
      *
-     * @param weatherCode
-     * @return description of current weather conditions
+     * @param weatherCode for current conditions
+     * @return description of current weather conditions corresponding to icon in fomantic ui
      */
     public static String codeToWeatherConditions(Integer weatherCode) {
         fillWeatherConditions();
@@ -43,7 +44,7 @@ public class StationAnalytics {
      * a method to convert the weather code to a String for an icon in fomantic ui
      * representing the current weather conditions
      *
-     * @param weatherCode
+     * @param weatherCode for current conditions
      * @return String for icon of current conditions
      */
     public static String codeToWeatherIcons(Integer weatherCode) {
@@ -114,10 +115,10 @@ public class StationAnalytics {
     }
 
     /**
-     * method to convert the wind direction in degrees to compass direction
+     * method to convert the wind direction in degrees to compass/cardinal direction
      *
      * @param windDirection
-     * @return compass Direction
+     * @return compass/cardinal direction of wind
      */
     public static String degreesToDirection(int windDirection) {
         String[] direction = {"N", "NNE", "NE", "ENE", "E", "ESE", "SE", "SSE", "S", "SSW", "SW", "WSW", "W", "WNW", "NW", "NNW", "N"};
@@ -128,8 +129,9 @@ public class StationAnalytics {
     /**
      * a method to calculate the wind chill
      *
+     * @param t temperature in degrees celsius
+     * @param v wind speed in km/h
      * @return wind chill
-     * @params temperature in degrees celsius, wind speed in km/h
      */
     public static double windChillCalculator(double t, double v) {
         return toTwoDecimalPlaces(13.12 + (0.6215 * t) - 11.37 * Math.pow(v, 0.16) + 0.3965 * t * Math.pow(v, 0.16));
@@ -138,8 +140,8 @@ public class StationAnalytics {
     /**
      * a private helper method to convert a double to two decimal places
      *
-     * @param num
-     * @return num to two decimal places
+     * @param num number in more that two decimal places
+     * @return number to two decimal places
      */
     private static double toTwoDecimalPlaces(double num) {
         BigDecimal bd = new BigDecimal(Double.toString(num));
@@ -150,7 +152,7 @@ public class StationAnalytics {
     /**
      * A method to calculate the minimum wind speed from all current wind speed readings
      *
-     * @param readings for the station
+     * @param readings readings for the station
      * @return the minimum wind speed of all the wind speed readings
      */
     public static double minWindSpeed(List<Reading> readings) {
@@ -166,7 +168,7 @@ public class StationAnalytics {
     /**
      * A method to calculate the maximum wind speed from all current wind speed readings
      *
-     * @param readings for the station
+     * @param readings readings for the station
      * @return the maximum wind speed of all the wind speed readings
      */
     public static double maxWindSpeed(List<Reading> readings) {
@@ -182,7 +184,7 @@ public class StationAnalytics {
     /**
      * A method to calculate the minimum pressure from all current pressure readings
      *
-     * @param readings for the station
+     * @param readings readings for the station
      * @return the minimum pressure of all the pressure readings
      */
     public static int minPressure(List<Reading> readings) {
@@ -198,7 +200,7 @@ public class StationAnalytics {
     /**
      * A method to calculate the maximum pressure from all current pressure readings
      *
-     * @param readings for the station
+     * @param readings readings for the station
      * @return the maximum pressure of all the pressure readings
      */
     public static int maxPressure(List<Reading> readings) {
@@ -214,7 +216,7 @@ public class StationAnalytics {
     /**
      * A method to calculate the minimum temperature from all current temperature readings
      *
-     * @param readings for the station
+     * @param readings readings for the station
      * @return the minimum temperature of all the temperature readings
      */
     public static double minTemp(List<Reading> readings) {
@@ -230,7 +232,7 @@ public class StationAnalytics {
     /**
      * A method to calculate the maximum temperature from all current temperature readings
      *
-     * @param readings for the station
+     * @param readings readings for the station
      * @return the maximum temperature of all the temperature readings
      */
     public static double maxTemp(List<Reading> readings) {
@@ -245,9 +247,9 @@ public class StationAnalytics {
 
     /**
      * a method determining if the last three temperature readings for a station are increasing, decreasing, or neither,
-     * and returning a string corresponding to an icon in fomatic ui
+     * and returning a string corresponding to an icon in fomantic ui
      *
-     * @param readings for station
+     * @param readings readings for the station
      * @return String corresponding to icon in fomantic ui
      */
     public static String tempTrend(List<Reading> readings) {
@@ -272,14 +274,14 @@ public class StationAnalytics {
                 return "arrow down";
             }
         }
-        return "arrows alternate horizontal";
+        return "no trend";
     }
 
     /**
      * a method determining if the last three wind readings for a station are increasing, decreasing, or neither,
-     * and returning a string corresponding to an icon in fomatic ui
+     * and returning a string corresponding to an icon in fomantic ui
      *
-     * @param readings for station
+     * @param readings readings for the station
      * @return String corresponding to icon in fomantic ui
      */
     public static String windTrend(List<Reading> readings) {
@@ -304,14 +306,14 @@ public class StationAnalytics {
                 return "arrow down";
             }
         }
-        return "arrows alternate horizontal";
+        return "no trend";
     }
 
     /**
      * a method determining if the last three pressure readings for a station are increasing, decreasing, or neither,
-     * and returning a string corresponding to an icon in fomatic ui
+     * and returning a string corresponding to an icon in fomantic ui
      *
-     * @param readings for station
+     * @param readings readings for the station
      * @return String corresponding to icon in fomantic ui
      */
     public static String pressureTrend(List<Reading> readings) {
@@ -336,8 +338,6 @@ public class StationAnalytics {
                 return "arrow down";
             }
         }
-        return "arrows alternate horizontal";
+        return "no trend";
     }
-
-
 }
