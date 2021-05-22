@@ -8,6 +8,7 @@ import models.Station;
 import play.Logger;
 import play.mvc.Controller;
 import utils.StationAnalytics;
+import utils.StationConversion;
 
 public class StationCtrl extends Controller {
     public static void index(Long id) {
@@ -17,16 +18,16 @@ public class StationCtrl extends Controller {
             Reading latestReading = station.readings.get(station.readings.size() - 1);
             station.tempCelsius = latestReading.temperature;
             station.pressure = latestReading.pressure;
-            station.weatherConditions = StationAnalytics.codeToWeatherConditions(latestReading.code);
-            station.tempFarenheit = StationAnalytics.celsiusToFahrenheit(latestReading.temperature);
-            station.beaufort = StationAnalytics.kmToBeaufort(latestReading.windSpeed);
-            station.compassDirection = StationAnalytics.degreesToDirection(latestReading.windDirection);
+            station.weatherConditions = StationConversion.codeToWeatherConditions(latestReading.code);
+            station.tempFarenheit = StationConversion.celsiusToFahrenheit(latestReading.temperature);
+            station.beaufort = StationConversion.kmToBeaufort(latestReading.windSpeed);
+            station.compassDirection = StationConversion.degreesToDirection(latestReading.windDirection);
             if ((latestReading.temperature <= 10) && (latestReading.windSpeed > 4.8)) {
                 station.windChill = StationAnalytics.windChillCalculator(latestReading.temperature, latestReading.windSpeed);
             } else {
                 station.windChill = station.tempCelsius;
             }
-            station.weatherIcon = StationAnalytics.codeToWeatherIcons(latestReading.code);
+            station.weatherIcon = StationConversion.codeToWeatherIcons(latestReading.code);
             station.minWindSpeed = StationAnalytics.minWindSpeed(station.readings);
             station.maxWindSpeed = StationAnalytics.maxWindSpeed(station.readings);
             station.maxPressure = StationAnalytics.maxPressure(station.readings);
